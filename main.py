@@ -26,7 +26,7 @@ def main(category, text, files):
 
     #insecure due to file name command injection but secure implementation of this would be nice
     execute = category + f'("{files}", "{text}")'
-    print("Debug execute var: " + execute)
+    #uncomment for exec () debug print("Debug execute var: " + execute)
     exec(execute)
 
 if __name__ == '__main__':
