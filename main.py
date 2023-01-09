@@ -3,6 +3,7 @@
 import click
 import os.path
 from crypto import *
+from pwn import *
 
 
 valid_categories = ('crypto', 'pwn', 'web', 'rev', 'forensics', 'osint')
@@ -25,6 +26,7 @@ def main(category, text, files):
 
     #insecure due to file name command injection but secure implementation of this would be nice
     execute = category + f'("{files}", "{text}")'
+    print("Debug execute var: " + execute)
     exec(execute)
 
 if __name__ == '__main__':
