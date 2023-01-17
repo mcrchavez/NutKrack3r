@@ -40,6 +40,13 @@ def main(category, text, files, fformat):
             print("Flagformat set to default resolving to empty string")
         flagfile.close()
 
+    #blacklisting dangerous charecters before feeding into exec()
+    blacklist = ['"', "'", '(', ')', ';']
+    for char in blacklist:
+        if (char in files) or (char in text):
+            print('Exiting -- dangerous char in inputs')
+            return 4
+
     #insecure due to file name command injection but secure implementation of this would be nice
     execute = category + f'("{files}", "{text}")'
     #uncomment for exec () debug print("Debug execute var: " + execute)
