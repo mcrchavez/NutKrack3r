@@ -25,14 +25,21 @@ def main(category, text, files, fformat):
         if not os.path.exists(files):
             print('Error: File does not exist, see --help')
             return 3
+    if fformat:
+        #print(f"fformat input: {fformat}")
+        #write the fformat striing to file to be stored
+        with open("flagformat.txt", 'w') as flagfile:
+            flagfile.write(fformat)
+            flagfile.close()
 
     with open("flagformat.txt", 'r') as flagfile:
-        flagformat = flagfile.read
+        flagformat = flagfile.read()
         if flagformat == r"defaultFlagFormat{}":
             #if the flag was never set other that default with --fformat
             #just provide the module with an empty string
             flagformat = ''
-            print("No flagformat provided resolving to empty string")
+            print("Flagformat set to default resolving to empty string")
+        flagfile.close()
 
     #insecure due to file name command injection but secure implementation of this would be nice
     execute = category + f'("{files}", "{text}")'
