@@ -13,7 +13,6 @@ valid_categories = ('crypto', 'pwn', 'web', 'rev', 'forensics', 'osint')
 @click.option('--text', default = '', help = 'CTF text inputs')
 @click.option('--files', default = '', help = 'CTF file inputs (File mqust be in same directory)')
 @click.option('--fformat', default = '', help= 'Provide with CTF flag format to be set as default')
-
 def main(category, text, files, fformat):
     if category not in valid_categories:
         print('Error: Category not valid, see --help')
